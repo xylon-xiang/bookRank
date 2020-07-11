@@ -1,9 +1,11 @@
 package com.xylon.book.controller;
 
 
+import com.xylon.book.model.Book;
 import com.xylon.book.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -13,7 +15,8 @@ public class BookController {
     BookService bookService;
 
     @PostMapping("/bookpub")
-    public void PubBook(){
+    public void PubBook(@RequestParam("book")Book book){
 
+        bookService.AddBook(book);
     }
 }

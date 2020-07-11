@@ -4,7 +4,7 @@ package com.xylon.book.mapper;
 import com.xylon.book.model.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
@@ -42,6 +42,9 @@ public interface UserMapper {
 
     @Select(value = "SELECT userPassword FROM User WHERE userId = #{userId}")
     String SearchUserPasswordByUserId(@Param("userId") long userId);
+
+    @Select(value = "SELECT * FROM User WHERE userId = #{userId}")
+    User SearchUserByUserId(@Param("userId") long userId);
 
     @Select(value = "SELECT userId FROM User ORDER BY userId desc LIMIT 1")
     long SearchLastUserId();

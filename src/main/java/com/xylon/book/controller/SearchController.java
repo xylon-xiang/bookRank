@@ -29,11 +29,12 @@ public class SearchController {
     public String GetBook(@RequestParam("keyword") String keyWord,
                           @RequestParam("tag") String tag){
 
-        List<Book> bookList = searchService.SearchBookByBookTag(tag);
+        List<Book> bookList = searchService.SearchBookByName(keyWord);
+        List<Book> bookList_tag = searchService.SearchBookByBookTag(tag);
 
+        bookList.addAll(bookList_tag);
 
-
-        return "";
+        return jsonUtil.ClassIntoJson(bookList);
     }
 
 }
